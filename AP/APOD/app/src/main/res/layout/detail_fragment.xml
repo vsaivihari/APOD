@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data class = "DetailFragment">
+        <variable
+                name="viewModel"
+                type="com.vihari.apod.detailfragment.DetailViewModel"/>
+    </data>
+
+    <ScrollView android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".detailfragment.DetailFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/detail_left_well"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_begin="8dp"/>
+
+            <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/detail_right_well"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_end="8dp"/>
+
+            <ImageView
+                    android:id="@+id/detail_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:scaleType="centerCrop"
+                    app:imageUrl="@{viewModel.selectedProperty.url}"
+                    tools:srcCompat="@tools:sample/backgrounds/scenic"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" android:contentDescription="TODO"/>
+
+            <TextView
+                    android:id="@+id/detail_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="16dp"
+                    android:textAlignment="viewStart"
+                    android:textAllCaps="false"
+                    android:textStyle="bold"
+                    app:text="@{viewModel.selectedProperty.title}"
+                    app:layout_constraintStart_toStartOf="@+id/detail_left_well"
+                    app:layout_constraintTop_toBottomOf="@+id/detail_image"/>
+
+            <TextView
+                    android:id="@+id/detail_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="16dp"
+                    android:textAlignment="viewStart"
+                    android:textAllCaps="false"
+                    android:textSize="14sp"
+                    app:text="@{viewModel.selectedProperty.date}"
+                    app:layout_constraintEnd_toEndOf="@+id/detail_right_well"
+                    app:layout_constraintTop_toBottomOf="parent"
+                    app:layout_constraintBaseline_toBaselineOf="@+id/detail_title"/>
+
+            <TextView
+                    android:id="@+id/detail_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="16dp"
+                    android:textAlignment="viewStart"
+                    android:textAllCaps="false"
+                    android:textSize="14sp"
+                    app:text="@{viewModel.selectedProperty.explanation}"
+                    app:layout_constraintStart_toStartOf="@+id/detail_left_well"
+                    app:layout_constraintTop_toBottomOf="@+id/detail_title"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
+</layout>
